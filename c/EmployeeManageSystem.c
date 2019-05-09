@@ -378,7 +378,7 @@ void execDelete(Filter *filter) {
   char buffer[LINE_BUFFER_SIZE];
   int isDeleteComplete = 0;
   while (fgets(buffer, LINE_BUFFER_SIZE, in) != NULL) {
-    if (isTarget(buffer, filter)) {
+    if (isDeleteComplete == 0 && isTarget(buffer, filter)) {
       isDeleteComplete = 1;
       continue;
     }
