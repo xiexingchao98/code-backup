@@ -2,7 +2,7 @@
 #ifndef _TETRIS_H_
 #define TETRIS_H
 
-#define MAP_ROW 12
+#define MAP_ROW 20
 #define MAP_COL 20
 
 const char *GAME_OVER_INFO     = "GG, Man~";
@@ -49,8 +49,8 @@ void tetris_copy(PTETRIS desti, PTETRIS src);
 void clearTetris(PTETRIS pTetris);
 void writeTetris(PTETRIS pTetris);
 int isObjectAside(PTETRIS pTetris);
-int hasFullRow();
-void clearFullRow(int rowStartIndex, int rowEndIndex);
+int isFullRow(int row);
+void clearFullRow(int rowIndex);
 void highlightFullRow(int rowIndex);
 void resetCursor();
 int isFullAppear(PTETRIS pTetris);
