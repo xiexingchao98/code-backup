@@ -15,7 +15,7 @@ doLogin() {
 }
 
 doLogout() {
-    location=`curl -I "${url_logout_redirect}" | grep "Location"`
+    location=`curl "${url_logout_redirect}" | grep "Location"`
     user_index=${location##*?}
     curl "${url_api}logout" --data-urlencode "${user_index}"
 }
