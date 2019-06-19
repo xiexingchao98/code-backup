@@ -7,6 +7,7 @@ cp jxaunet ~/
 cd ~/jxaunet
 mv jxaunet.sh jxaunet
 sudo sh -c  "echo -e 'export PATH=\${PATH}:~/jxaunet' >> /etc/profile.d/custom.sh"
+sudo sh -c  "echo 'export JXAUNET_HOME=~/jxaunet' >> /etc/profile.d/custom.sh"
 source /etc/profile
 ```
 ## 编辑配置文件
