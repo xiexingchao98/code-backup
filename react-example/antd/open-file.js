@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import 'antd/dist/antd.css';
-import {Upload, Button, Icon} from 'antd';
+import {Upload, Button, Icon, Layout} from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
 
 /*
+ * 提供两种使用方式
+ * 1. 本地读取文件数据
+ * 2. 本地上传文件至服务端
+ */
+
+/*
+ * 1. 本地读取文件数据
+ *
  * 参考:
  *
  * [Blob] -> https://developer.mozilla.org/en-US/docs/Web/API/Blob
@@ -11,7 +20,7 @@ import {Upload, Button, Icon} from 'antd';
  * [beforeUpload()] -> https://ant.design/components/upload-cn/#API
  */
 
-const props = {
+const props1 = {
   accept: '.csv',
   beforeUpload: (file, fileList) => {
     console.log(file);
@@ -32,11 +41,35 @@ const props = {
   }
 };
 
+/*
+ * 2. 本地上传文件至服务端
+ *
+ * 注意打开 console 进行观察输出和网络请求
+ */
+const props2 = {
+  name: "file",
+  action: "http://localhost:9090/upload",
+};
+
+/*
+ * 组件渲染
+ */
+
 ReactDOM.render(
-  <Upload {...props}>
-    <Button>
-      <Icon type='upload' />Select file
-    </Button>
-  </Upload>,
+  <Layout>
+    <Content>
+      <Upload {...props1}>
+        <Button>
+          <Icon type='upload' />读取本地文件
+        </Button>
+      </Upload>
+
+      <Upload {...props2}>
+        <Button>
+          <Icon type='upload' />上传本地文件至服务端
+        </Button>
+      </Upload>
+    </Content>
+  </Layout>,
   document.getElementById("root")
 );
